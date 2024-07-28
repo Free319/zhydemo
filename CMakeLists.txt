@@ -6,8 +6,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 定义变量
-# 静态库生成的路径
 set(LIBPATH ${PROJECT_SOURCE_DIR}/lib)
+# 静态库生成的路径
+set(STATIC_LIBPATH ${PROJECT_SOURCE_DIR}/static)
+# 动态库生成的路径
+set(SHARED_LIBPATH ${PROJECT_SOURCE_DIR}/shared)
 # 可执行程序的存储目录
 set(EXECPATH ${PROJECT_SOURCE_DIR}/bin)
 # 头文件路径
