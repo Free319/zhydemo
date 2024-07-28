@@ -1,40 +1,39 @@
-cmake_minimum_required(VERSION 3.28.0)
-
+ï»¿cmake_minimum_required(VERSION 3.20.0)
 project(ZHYLIB)
 
-# °æ±¾ĞÅÏ¢£º
-# ÎÄ¼ş°æ±¾
+# ç‰ˆæœ¬ä¿¡æ¯ï¼š
+# æ–‡ä»¶ç‰ˆæœ¬
 set(MY_VER_FILEVERSION 1,1,0,0)
-# ²úÆ·°æ±¾
+# äº§å“ç‰ˆæœ¬
 set(MY_VER_PRODUCTVERSION 1.1.0.0)
-# ÎÄ¼şÃèÊö
-set(MY_VER_FILEDESCRIPTION "zhyµÄlib¿â")
-# Ô­Ê¼ÎÄ¼şÃû
+# æ–‡ä»¶æè¿°
+set(MY_VER_FILEDESCRIPTION "zhylib")
+# åŸå§‹æ–‡ä»¶å
 set(MY_VER_ORIGINALFILENAME "zhylib.lib")
-# ÎÄ¼şÃû³Æ
+# æ–‡ä»¶åç§°
 set(MY_VER_INTERNALNAME "zhy Library")
-# ²úÆ·Ãû³Æ
+# äº§å“åç§°
 set(MY_VER_PRODUCTNAME "ZHYLibrary")
-# °æÈ¨
+# ç‰ˆæƒ
 set(MY_VER_LEGALCOPYRIGHT "Copyright (C) ZHY Corporation 2024 - 2099")
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/version.rc.in
   ${CMAKE_CURRENT_BINARY_DIR}/version.rc
   @ONLY)
 
-# Èç¹ûÓĞÆäËûÍ·ÎÄ¼şÄ¿Â¼£¬¿ÉÒÔÌí¼Óinclude_directories
+# å¦‚æœæœ‰å…¶ä»–å¤´æ–‡ä»¶ç›®å½•ï¼Œå¯ä»¥æ·»åŠ include_directories
 # include_directories(include)
 
-# Ìí¼Ó¶¯Ì¬¿â
+# æ·»åŠ åŠ¨æ€åº“
 set(LIBRARY_OUTPUT_PATH ${LIBPATH})
 add_library(zhylib SHARED zhylib.cpp 
 ${CMAKE_CURRENT_BINARY_DIR}/version.rc)
 
-# Éú³É¾²Ì¬¿â
+# ç”Ÿæˆé™æ€åº“
 add_library(zhylib_static STATIC zhylib.cpp
 ${CMAKE_CURRENT_BINARY_DIR}/version.rc)
 
-# °²×°
+# å®‰è£…
 install (TARGETS zhylib
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
@@ -44,5 +43,7 @@ install (TARGETS zhylib_static
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
+
+
 
 install (FILES zhylib.h DESTINATION "include")

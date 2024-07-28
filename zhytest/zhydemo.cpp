@@ -1,12 +1,30 @@
-#include <iostream>
+﻿#include <iostream>
 #include "zhylib.h"
+#ifdef _WIN32
 #include <Windows.h>
-
+#endif
+#include <cassert>
+#include <algorithm>
+#include <cmath>
 using namespace std;
-int main()
+
+int main(int argc, char* argv[])
 {
-	auto handle = LoadLibrary("zhytest.dll");
+	pair t_pair(1, "sss");
+	auto [a, s] = t_pair;
 
 	ZhyPrint();
-	return 0;
+
+	if (3 < argc)
+	{
+		cout << "parameter right" << endl;
+		cout << (atoi(argv[1]) + atoi(argv[2])) << endl;
+	}
+	else
+	{
+		return -1;
+	}
+
 }
+
+

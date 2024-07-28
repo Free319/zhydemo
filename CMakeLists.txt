@@ -1,25 +1,27 @@
-cmake_minimum_required(VERSION 3.28.0)
-project(zhydemo)
+ï»¿cmake_minimum_required(VERSION 3.28.0)
+project(ZHYDEMO)
 
-# ÉèÖÃC++±ê×¼ÎªC++17
+# è®¾ç½®C++æ ‡å‡†ä¸ºC++17
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# ¶¨Òå±äÁ¿
+# å®šä¹‰å˜é‡
 set(LIBPATH ${PROJECT_SOURCE_DIR}/lib)
-# ¾²Ì¬¿âÉú³ÉµÄÂ·¾¶
+# é™æ€åº“ç”Ÿæˆçš„è·¯å¾„
 set(STATIC_LIBPATH ${PROJECT_SOURCE_DIR}/static)
-# ¶¯Ì¬¿âÉú³ÉµÄÂ·¾¶
+# åŠ¨æ€åº“ç”Ÿæˆçš„è·¯å¾„
 set(SHARED_LIBPATH ${PROJECT_SOURCE_DIR}/shared)
-# ¿ÉÖ´ĞĞ³ÌĞòµÄ´æ´¢Ä¿Â¼
+# å¯æ‰§è¡Œç¨‹åºçš„å­˜å‚¨ç›®å½•
 set(EXECPATH ${PROJECT_SOURCE_DIR}/bin)
-# Í·ÎÄ¼şÂ·¾¶
+# å¤´æ–‡ä»¶è·¯å¾„
 set(HEADPATH ${PROJECT_SOURCE_DIR}/zhylib)
-# ¿âµÄÃû×Ö
+# åº“çš„åå­—
 set(ZHYLIB zhylib)
-# ¿ÉÖ´ĞĞ³ÌĞòµÄÃû×Ö
+# å¯æ‰§è¡Œç¨‹åºçš„åå­—
 set(ZHYTEST zhytest)
 
-# ¸øµ±Ç°½ÚµãÌí¼Ó×ÓÄ¿Â¼
-add_subdirectory(ZHYLIB)
-add_subdirectory(ZHYTEST)
+# ç»™å½“å‰èŠ‚ç‚¹æ·»åŠ å­ç›®å½•
+add_subdirectory(zhylib)
+
+enable_testing()
+add_subdirectory(zhytest)
