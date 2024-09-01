@@ -1,5 +1,5 @@
 ﻿cmake_minimum_required(VERSION 3.20.0)
-project(ZHYLIB)
+project(ZHYMYLIB)
 
 # 版本信息：
 # 文件版本
@@ -25,13 +25,22 @@ configure_file(
 # include_directories(include)
 
 # 添加动态库
-set(LIBRARY_OUTPUT_PATH ${LIBPATH})
 add_library(zhylib SHARED zhylib.cpp 
 ${CMAKE_CURRENT_BINARY_DIR}/version.rc)
+# 构建C++预定义宏
+target_compile_definitions(zhylib PRIVATE "DLL_EXPORT")
+# 设置动态库生成目录
+set_target_properties(zhylib PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${SHARED_LIBPATH}"
+  LIBRARY_OUTPUT_DIRECTORY "${STATIC_LIBPATH}"
+  ARCHIVE_OUTPUT_DIRECTORY "${STATIC_LIBPATH}")
 
 # 生成静态库
 add_library(zhylib_static STATIC zhylib.cpp
 ${CMAKE_CURRENT_BINARY_DIR}/version.rc)
+# 设置静态库生成目录
+set_target_properties(zhylib_static PROPERTIES
+  ARCHIVE_OUTPUT_DIRECTORY "${STATIC_LIBPATH}")
 
 # 安装
 install (TARGETS zhylib
@@ -44,6 +53,5 @@ install (TARGETS zhylib_static
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
 
-
-
+# 安装头文件
 install (FILES zhylib.h DESTINATION "include")
