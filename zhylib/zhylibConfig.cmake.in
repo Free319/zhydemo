@@ -1,0 +1,7 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+# 如果需要可以添加 find_dependency(<Dependency>)
+
+include("${CMAKE_CURRENT_LIST_DIR}/zhylibTargets.cmake")
